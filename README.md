@@ -15,3 +15,5 @@ A little bit cleaner (but not very efficient) are the implementations in:
 You can read about the approch here:
 
 Christian Igel. [Smooth Min-Max Monotonic Networks](https://icml.cc/virtual/2024/poster/33186). *International Conference on Machine Learning*, 2024
+
+Christian Igel. [Smooth Min-Max Monotonic Networks](https://arxiv.org/abs/2306.01147). *arXiv:2306.01147v3* [cs.LG], 2024

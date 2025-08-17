@@ -58,6 +58,8 @@ class SmoothMonotonicNN(nn.Module):
         return -torch.logsumexp(-a, dim=1)
     
     def forward(self, x):
+        if x.dim()==1:
+            x=x.reshape(-1,1)
         for i in range(self.K):  # loop over groups
             # hidden layer
             if(self.transform == 'exp'):

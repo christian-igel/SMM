@@ -18,7 +18,7 @@ Args:
     transform (string): type of transformation for ensuring positivity ('exp', 'abs', 'explin', 'sqr')
 """
 class SmoothMonotonicNN(nn.Module):
-    def __init__(self, n, K, h_K, b_z = 1., b_t = 1., beta=-1., transform='exp'):
+    def __init__(self, n, K, h_K, b_z = 1., b_t = 1., beta=-1., transform='sqr'):
         super(SmoothMonotonicNN, self).__init__()
         self.K = K
         self.beta_init = beta
@@ -65,9 +65,9 @@ class SmoothMonotonicNN(nn.Module):
             # hidden layer
             if(self.transform == 'exp'):
                 w = torch.exp(self.z[i])  # positive weights
-            if(self.transform == 'abs'):
+            elif(self.transform == 'abs'):
                 w = torch.abs(self.z[i])  # positive weights
-            if(self.transform == 'explin'):
+            elif(self.transform == 'explin'):
                 w = torch.where(self.z[i] > 1., self.z[i], torch.exp(self.z[i]-1.))  # positive weights
             else:
                 w = self.z[i] * self.z[i]
@@ -100,7 +100,7 @@ Args:
     transform (string): type of transformation for ensuring positivity ('exp', 'abs', 'explin', 'sqr')
 """
 class SmoothMonotonicNNAlt(nn.Module):
-    def __init__(self, n, K, h_K, mask, b_z = 1., b_t = 1., beta=-1., transform="exp"):
+    def __init__(self, n, K, h_K, mask, b_z = 1., b_t = 1., beta=-1., transform="sqr"):
         super(SmoothMonotonicNNAlt, self).__init__()
         self.K = K
         self.beta_init = beta
@@ -133,9 +133,9 @@ class SmoothMonotonicNNAlt(nn.Module):
             # hidden layer
             if(self.transform == 'exp'):
                 w = torch.exp(self.z[i])  # positive weights
-            if(self.transform == 'abs'):
+            elif(self.transform == 'abs'):
                 w = torch.abs(self.z[i])  # positive weights
-            if(self.transform == 'explin'):
+            elif(self.transform == 'explin'):
                 w = torch.where(self.z[i] > 1., self.z[i], torch.exp(self.z[i]-1.))  # positive weights
             else:
                 w = self.z[i] * self.z[i]
@@ -274,7 +274,7 @@ Args:
     transform (string): type of transformation for ensuring positivity ('exp', 'abs', 'explin', 'sqr')
 """
 class SMM_MLP(nn.Module):
-    def __init__(self, dim, increasing, num_neuron, K=6, transform="exp", last_linear=False):
+    def __init__(self, dim, increasing, num_neuron, K=6, transform="sqr", last_linear=False):
         super().__init__()
         
         # Mc: project to constrained features

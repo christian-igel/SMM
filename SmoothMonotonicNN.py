@@ -64,9 +64,9 @@ class SmoothMonotonicNN(nn.Module):
             # hidden layer
             if(self.transform == 'exp'):
                 w = torch.exp(self.z[i])  # positive weights
-            if(self.transform == 'abs'):
+            elif(self.transform == 'abs'):
                 w = torch.abs(self.z[i])  # positive weights
-            if(self.transform == 'explin'):
+            elif(self.transform == 'explin'):
                 w = torch.where(self.z[i] > 1., self.z[i], torch.exp(self.z[i]-1.))  # positive weights
             else:
                 w = self.z[i] * self.z[i]

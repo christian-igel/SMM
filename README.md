@@ -5,7 +5,7 @@ Monotonicity constraints are powerful regularizers in statistical modelling. The
 <img src="MinMax.png" width=50% alt="figure of min-max architecture" align="right">
 
 ### Code 
-The directory [`ICML2014 Supplement`](ICML2014%20Supplement) contains the PyTorch code for reproducing the experiments presented in the ICML 2024 paper introducing SMM networks [[Igel, 2024](https://icml.cc/virtual/2024/poster/33186)].
+The directory [`ICML2024 Supplement`](ICML2024%20Supplement) contains the PyTorch code for reproducing the experiments presented in the ICML 2024 paper introducing SMM networks [[Igel, 2024](https://icml.cc/virtual/2024/poster/33186)].
 The code is not very clean (e.g., containing several slightly different ways to implement the SMM).
 
 A little bit cleaner (but not very efficient) are the implementations in:
